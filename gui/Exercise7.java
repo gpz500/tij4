@@ -26,7 +26,7 @@ public class Exercise7 extends JFrame {
     private JTextField outputTxt = new JTextField(40);
 
     private JButton button = new JButton("Click me");
-    private JComboBox<String> comboBox = new JComboBox(new String[] { "Primo", "Secondo", "Terzo" });
+    private JComboBox<String> comboBox = new JComboBox<String>(new String[] { "Primo", "Secondo", "Terzo" });
     private JFileChooser fileChooser = new JFileChooser(".");
     private JTextField textField = new JTextField(40);
     private Timer timer = new Timer(5_000, listener);
