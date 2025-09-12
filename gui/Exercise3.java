@@ -3,28 +3,24 @@ package gui;
 
 import javax.swing.*;
 import java.util.concurrent.*;
+import net.mindview.util.SwingConsole;
 
-public class SubmitSwingProgram extends JFrame {
+public class Exercise3 extends JFrame {
     JLabel label;
 
-    public SubmitSwingProgram() {
-        super("Hello Swing");
+    public Exercise3() {
         label = new JLabel("A Label");
         add(label);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(300, 100);
-        setVisible(true);
     }
 
-    static SubmitSwingProgram ssp;
+    static Exercise3 ssp;
 
     public static void main(String[] args) throws Exception {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                ssp = new SubmitSwingProgram();
-            }
-        });
+        ssp = new Exercise3();
+        SwingConsole.run(ssp, 300, 100);
+
         TimeUnit.SECONDS.sleep(1);
+        
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 ssp.label.setText("Hey! This is Different!");
