@@ -30,11 +30,16 @@ public class Exercise6 extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 Pattern p = Pattern.compile(regularExpression.getText());
                 Matcher m = p.matcher(inputText.getText());
+                boolean found = false;
                 while (m.find()) {
                     outputText.append("Match \"" + m.group() + "\" at positions " +
                             m.start() + "-" + (m.end() - 1) + "\n");
+                    found = true;
                 }
 
+                if (!found) {
+                    outputText.append("No match...\n");
+                }
             }
 
         });
