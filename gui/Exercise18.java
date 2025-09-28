@@ -34,7 +34,13 @@ public class Exercise18 extends JFrame {
                 int sel = JOptionPane.showConfirmDialog(null,
                         "or no", "choose yes",
                         JOptionPane.YES_NO_OPTION);
-                txt.setText(Integer.toString(sel));
+                String message = "Neither fish nor fowl";
+                if (sel == JOptionPane.NO_OPTION) {
+                    message = "No";
+                } else if (sel == JOptionPane.YES_OPTION) {
+                    message = "Yes";
+                }
+                txt.setText(message);
             }
         });
 
