@@ -1,7 +1,8 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -14,8 +15,9 @@ import net.mindview.util.SwingConsole;
 
 public class Exercise22 extends JFrame {
 
-    JPanel panel = new JPanel();
-    JTextField txt = new JTextField(30);
+    JPanel colorsPanel = new JPanel();
+    JPanel sliders = new JPanel();
+    JTextField txt = new JTextField(15);
     JSlider rSlider = new JSlider(0, 255);
     JSlider gSlider = new JSlider(0, 255);
     JSlider bSlider = new JSlider(0, 255);
@@ -34,20 +36,25 @@ public class Exercise22 extends JFrame {
      * Default contructor
      */
     public Exercise22() {
-        add(panel);
-        add(BorderLayout.NORTH, txt);
-        add(BorderLayout.WEST, rSlider);
-        add(BorderLayout.SOUTH, gSlider);
-        add(BorderLayout.EAST, bSlider);
-        
+        txt.setEditable(false);
+
+        sliders.setLayout(new FlowLayout());
+        sliders.add(txt);
+        sliders.add(rSlider);
+        sliders.add(gSlider);
+        sliders.add(bSlider);
+
+        setLayout(new GridLayout(2, 1));
+        add(colorsPanel);
+        add(sliders);
 
         rSlider.addChangeListener(cl);
         gSlider.addChangeListener(cl);
         bSlider.addChangeListener(cl);
 
-        rSlider.setValue(panel.getBackground().getRed());
-        gSlider.setValue(panel.getBackground().getGreen());
-        bSlider.setValue(panel.getBackground().getBlue());
+        rSlider.setValue(colorsPanel.getBackground().getRed());
+        gSlider.setValue(colorsPanel.getBackground().getGreen());
+        bSlider.setValue(colorsPanel.getBackground().getBlue());
 
         updateColors();
     }
@@ -61,13 +68,13 @@ public class Exercise22 extends JFrame {
         int g = gSlider.getValue();
         int b = bSlider.getValue();
         txt.setText(String.format("(%d, %d, %d)", r, g, b));
-        panel.setBackground(new Color(r, g, b));
+        colorsPanel.setBackground(new Color(r, g, b));
     }
 
     /**
      * App entry point
      */
     public static void main(String[] args) {
-        SwingConsole.run(new Exercise22(), 800, 300);
+        SwingConsole.run(new Exercise22(), 300, 300);
     }
 }
