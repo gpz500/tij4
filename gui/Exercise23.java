@@ -19,9 +19,10 @@ class RotatingBox extends JPanel {
     private Timer tmr = new Timer((int) (1000.0 / FPS), evt -> {
         updateAngle();
     });
-    private double angularSpeed = 0;
-    private int side = 100;
-    private JTextField txt = new JTextField(10);
+    private double angularSpeed;
+    private int side;
+    private int speed;
+    private JTextField txt = new JTextField(20);
 
     private double angle = 45;
     private double[] x = new double[4];
@@ -53,7 +54,7 @@ class RotatingBox extends JPanel {
             g.drawLine((int) px[i], (int) py[i], (int) px[(i + 1) % 4], (int) py[(i + 1) % 4]);
         }
 
-        txt.setText("Time: " + System.currentTimeMillis() % 10000);
+        txt.setText("Side: " + side + "; speed: " + speed + "; time: " + System.currentTimeMillis() % 10000);
      }
 
     private void calcVertex() {
@@ -82,7 +83,8 @@ class RotatingBox extends JPanel {
     }
 
     public void setSpeed(int newSpeed) {
-        double nsRadPerSec = (double) newSpeed * Math.PI / 180.0;
+        speed = newSpeed;
+        double nsRadPerSec = (double) speed * Math.PI / 180.0;
         angularSpeed = nsRadPerSec / FPS;
     }
 
@@ -95,8 +97,8 @@ class RotatingBox extends JPanel {
 
 public class Exercise23 extends JFrame {
 
-    JSlider side = new JSlider(JSlider.VERTICAL, 10, 300, 150);
-    JSlider speed = new JSlider(JSlider.VERTICAL, 0, 90, 20);
+    JSlider side = new JSlider(JSlider.VERTICAL, 10, 600, 150);
+    JSlider speed = new JSlider(JSlider.VERTICAL, 0, 360, 20);
     RotatingBox myBox = new RotatingBox(side.getValue(), speed.getValue());
 
     public Exercise23() {
