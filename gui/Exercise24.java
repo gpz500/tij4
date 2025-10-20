@@ -17,32 +17,33 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-class Point {
-    private int x;
-    private int y;
-
-    public Point(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-}
-
 class Sketching extends JPanel {
+
+    static class Point {
+        private int x;
+        private int y;
+
+        public Point(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        public int getX() {
+            return x;
+        }
+
+        public int getY() {
+            return y;
+        }
+    }
+
     private List<Point> points = new LinkedList<Point>();
 
     /**
      * Plot a line from previous point to the new one
      */
     @Override
-     public void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
         if (points.size() >= 2) {
@@ -53,30 +54,30 @@ class Sketching extends JPanel {
                 g.drawLine(first.getX(), first.getY(), second.getX(), second.getY());
             }
         }
-     }
+    }
 
-     /**
-      * Clean the whole panel
-      */
-      public void clean() {
+    /**
+     * Clean the whole panel
+     */
+    public void clean() {
         points.clear();
         repaint();
-      }
+    }
 
-      /**
-       * Add a new piece of line
-       */
-      public void addStroke(Point newPoint) {
+    /**
+     * Add a new piece of line
+     */
+    public void addStroke(Point newPoint) {
         points.add(newPoint);
         repaint();
-      }
+    }
 }
 
 public class Exercise24 extends JFrame {
     private Sketching sketch = new Sketching();
     private JSlider xslider = new JSlider(0, 300, 10);
     private JSlider yslider = new JSlider(JSlider.VERTICAL, 0, 300, 10);
-    private JButton clearBtn = new JButton("Clear"); 
+    private JButton clearBtn = new JButton("Clear");
 
     /**
      * My change listener
@@ -84,7 +85,7 @@ public class Exercise24 extends JFrame {
     private ChangeListener cl = new ChangeListener() {
         @Override
         public void stateChanged(ChangeEvent e) {
-            Point point = new Point(xslider.getValue(), yslider.getValue());
+            Sketching.Point point = new Sketching.Point(xslider.getValue(), yslider.getValue());
             sketch.addStroke(point);
         }
     };
