@@ -39,7 +39,7 @@ public class LookAndFeel extends JFrame {
     }
 
     private static void usageError() {
-        System.out.println("Usage:LookAndFeel [cross|system|motif]");
+        System.out.println("Usage:LookAndFeel [cross|nimbus|system|motif]");
         System.exit(1);
     }
 
@@ -61,6 +61,12 @@ public class LookAndFeel extends JFrame {
         } else if (args[0].equals("motif")) {
             try {
                 UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (args[0].equals("nimbus")) {
+            try {
+                UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
             } catch (Exception e) {
                 e.printStackTrace();
             }
