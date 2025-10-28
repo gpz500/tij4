@@ -4,12 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.Timer;
+import javax.swing.UIManager;
 import javax.swing.event.ChangeEvent;
 
 import net.mindview.util.SwingConsole;
@@ -55,7 +55,7 @@ class RotatingBox extends JPanel {
         }
 
         txt.setText("Side: " + side + "; speed: " + speed + "; time: " + System.currentTimeMillis() % 10000);
-     }
+    }
 
     private void calcVertex() {
         double[] tmpx = new double[4];
@@ -116,6 +116,12 @@ public class Exercise23 extends JFrame {
     }
 
     public static void main(String[] args) {
+        try {
+            UIManager.setLookAndFeel(
+                    UIManager.getCrossPlatformLookAndFeelClassName());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         SwingConsole.run(new Exercise23(), 400, 400);
     }
 }
