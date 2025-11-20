@@ -18,6 +18,7 @@ class Task implements Runnable {
     private static int counter = 0;
     private final int id = counter++;
 
+    @Override
     public void run() {
         System.out.println(this + " started");
         try {
@@ -29,6 +30,7 @@ class Task implements Runnable {
         System.out.println(this + " completed");
     }
 
+    @Override
     public String toString() {
         return "Task " + id;
     }

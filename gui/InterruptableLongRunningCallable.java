@@ -17,6 +17,8 @@ import net.mindview.util.TaskManager;
 
 class CallableTask extends Task
         implements Callable<String> {
+
+    @Override
     public String call() {
         run();
         return "Return value of " + this;
