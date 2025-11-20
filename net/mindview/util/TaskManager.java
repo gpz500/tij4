@@ -13,6 +13,18 @@ public class TaskManager<R, C extends Callable<R>>
         extends ArrayList<TaskItem<R, C>> {
     private ExecutorService exec = Executors.newSingleThreadExecutor();
 
+    public TaskManager() {
+        super();
+    }
+
+    public TaskManager(boolean parallelTasks) {
+        super();
+
+        if (parallelTasks) {
+            exec = Executors.newCachedThreadPool();
+        }
+    }
+
     public void add(C task) {
         add(new TaskItem<R, C>(exec.submit(task), task));
     }
