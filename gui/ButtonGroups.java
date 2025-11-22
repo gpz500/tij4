@@ -3,11 +3,20 @@
 // of different types of AbstractButton.
 package gui;
 
-import javax.swing.*;
-import javax.swing.border.*;
-import java.awt.*;
-import java.lang.reflect.*;
-import static net.mindview.util.SwingConsole.*;
+import static net.mindview.util.SwingConsole.run;
+
+import java.awt.FlowLayout;
+import java.lang.reflect.Constructor;
+
+import javax.swing.AbstractButton;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JToggleButton;
+import javax.swing.border.TitledBorder;
 
 public class ButtonGroups extends JFrame {
     private static String[] ids = {
