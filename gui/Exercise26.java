@@ -4,7 +4,6 @@ package gui;
 
 import static net.mindview.util.SwingConsole.run;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
