@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 import net.mindview.util.TaskItem;
 import net.mindview.util.TaskManager;
 
-class CallableTask extends Task
+class E33CallableTask extends Task
         implements Callable<String> {
     public String call() {
         run();
@@ -27,12 +27,12 @@ public class Exercise33 extends JFrame {
     private JButton b1 = new JButton("Start Long Running Task"),
             b2 = new JButton("End Long Running Task"),
             b3 = new JButton("Get results");
-    private TaskManager<String, CallableTask> manager = new TaskManager<String, CallableTask>(true);
+    private TaskManager<String, E33CallableTask> manager = new TaskManager<String, E33CallableTask>(true);
 
     public Exercise33() {
         b1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                CallableTask task = new CallableTask();
+                E33CallableTask task = new E33CallableTask();
                 manager.add(task);
                 System.out.println(task + " added to the queue");
             }
@@ -46,7 +46,7 @@ public class Exercise33 extends JFrame {
         b3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Sample call to a Task method:
-                for (TaskItem<String, CallableTask> tt : manager)
+                for (TaskItem<String, E33CallableTask> tt : manager)
                     tt.task.id(); // No cast required
                 for (String result : manager.getResults())
                     System.out.println(result);

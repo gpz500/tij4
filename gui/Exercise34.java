@@ -50,7 +50,7 @@ class Ex34CBox extends JPanel implements Runnable {
     }
 }
 
-public class Excercise34 extends JFrame {
+public class Exercise34 extends JFrame {
     private int grid = 12;
     private int pause = 50;
     private static ExecutorService exec = Executors.newCachedThreadPool();
@@ -65,7 +65,7 @@ public class Excercise34 extends JFrame {
     }
 
     public static void main(String[] args) {
-        Excercise34 boxes = new Excercise34();
+        Exercise34 boxes = new Exercise34();
         if (args.length > 0)
             boxes.grid = Integer.parseInt(args[0]);
         if (args.length > 1)
