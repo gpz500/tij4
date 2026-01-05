@@ -2,7 +2,7 @@
 // Using Callables for long-running tasks.
 package gui;
 
-import static net.mindview.util.SwingConsole.run;
+import net.mindview.util.SwingConsole;
 
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -61,6 +61,6 @@ public class InterruptableLongRunningCallable extends JFrame {
     }
 
     public static void main(String[] args) {
-        run(new InterruptableLongRunningCallable(), 200, 150);
+        SwingConsole.run(new InterruptableLongRunningCallable(), 200, 150);
     }
 } /// :~
